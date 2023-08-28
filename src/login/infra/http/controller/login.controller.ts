@@ -2,16 +2,20 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Render } from '@nest
 import { LoginService } from '../../../service/login.service';
 import { CreateLoginDto } from '../../../dto/create-login.dto';
 import { UpdateLoginDto } from '../../../dto/update-login.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('login')
 export class LoginController {
   constructor(private readonly loginService: LoginService) {}
 
-  @Post()
+  @ApiTags('Login')
+  @Post('/register')
   create(@Body() createLoginDto: CreateLoginDto) {
+    console.log(createLoginDto)
     return this.loginService.create(createLoginDto);
   }
 
+  @ApiTags('Login')
   @Get()
   @Render('login')
   getLoginIndex() {
