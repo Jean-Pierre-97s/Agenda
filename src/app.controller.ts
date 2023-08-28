@@ -1,13 +1,11 @@
 import { Controller, Get, Render } from '@nestjs/common';
-import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
 
   @Get()
   @Render('index')
   getHello() {
-    return { message: this.appService.getHello() }; // Pass data to the view
+    return { message: "Hello World" }; // Pass data to the view
   }
 }
